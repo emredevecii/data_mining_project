@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.552">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Project: Travel Destination Recommender</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="tdr_files/libs/clipboard/clipboard.min.js"></script>
+<script src="tdr_files/libs/quarto-html/quarto.js"></script>
+<script src="tdr_files/libs/quarto-html/popper.min.js"></script>
+<script src="tdr_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="tdr_files/libs/quarto-html/anchor.min.js"></script>
+<link href="tdr_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="tdr_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="tdr_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="tdr_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="tdr_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Project: <strong>Travel Destination Recommender</strong></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<ol type="1">
+<li><a href="#1-project-overview">Project Overview</a>
+<ul>
+<li>Introduction</li>
+<li>Goals and Objectives</li>
+<li>Significance of the Project</li>
+</ul></li>
+<li><a href="#2-implementation-details">Implementation Details</a>
+<ul>
+<li>Data Collection</li>
+<li>Data Preprocessing</li>
+<li>Feature Extraction</li>
+<li>Recommendation Engine Development</li>
+<li>User Interface Design</li>
+</ul></li>
+<li><a href="#3-analysis-and-results">Analysis and Results</a>
+<ul>
+<li>Data Analysis Techniques Used</li>
+<li>Presentation of Results</li>
+<li>Evaluation Metrics</li>
+</ul></li>
+<li><a href="#4-reflection-and-conclusion">Reflection and Conclusion</a>
+<ul>
+<li>Challenges Faced</li>
+<li>Lessons Learned</li>
+<li>Overall Significance of Findings</li>
+<li>Future Directions</li>
+</ul></li>
+<li><a href="#5-references">References</a></li>
+<li><a href="#6-appendix">Appendix</a>
+<ul>
+<li>Code snippets (if applicable)</li>
+<li>Visualizations</li>
+</ul></li>
+</ol>
+<section id="project-overview" class="level1">
+<h1>1.Project Overview</h1>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">1.1 Introduction</h2>
+<p>Travel is an enriching experience that broadens our horizons, allowing us to immerse ourselves in new cultures, explore breathtaking landscapes, and create lasting memories. However, planning a trip can be a daunting task, with countless destinations, attractions, and activities to consider. This is where the Travel Destination Recommender comes into play, offering a personalized and seamless solution to help travelers discover their ideal vacation spot.</p>
+<p>In today’s digital age, an abundance of travel-related information is readily available on the internet, scattered across various websites and platforms. While this wealth of data can be overwhelming, it also presents an opportunity to leverage web scraping techniques to gather and curate relevant information from popular travel sites like TripAdvisor, Lonely Planet, and Yelp.</p>
+<p>The Travel Destination Recommender harnesses the power of web scraping to collect and analyze data on attractions, hotels, restaurants, and local experiences, tailoring recommendations to individual preferences such as budget, interests, and travel dates. By consolidating and processing this vast array of information, the recommender system provides users with a comprehensive and personalized guide, streamlining the travel planning process and ensuring a memorable and fulfilling journey.</p>
+<p>This innovative approach not only saves time and effort for travelers but also encourages the exploration of lesser-known destinations and hidden gems, fostering a more authentic and enriching travel experience. The Travel Destination Recommender represents a significant step forward in the realm of travel planning, empowering users to discover their dream destinations with ease and confidence.</p>
+</section>
+<section id="goals-and-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="goals-and-objectives">1.2 Goals and Objectives</h2>
+<p>Here are some potential goals and objectives for our Travel Destination Recommender project:</p>
+<p><strong>Goals:</strong></p>
+<ol type="1">
+<li><p>Develop a travel recommendation system that provides personalized suggestions for destinations, attractions, accommodations, and local experiences based on individual preferences.</p></li>
+<li><p>Leverage web scraping techniques to gather and consolidate relevant data from popular travel websites, ensuring the recommender system has access to a vast and up-to-date database of travel-related information.</p></li>
+<li><p>Encourage the exploration of lesser-known destinations and hidden gems, fostering a more authentic and enriching travel experience for users.</p></li>
+<li><p>Continuously improve and refine the recommendation algorithms to provide increasingly accurate and relevant suggestions as the system accumulates more data and feedback.</p></li>
+</ol>
+<p><strong>Objectives:</strong></p>
+<ol type="1">
+<li><p>Implement efficient web scraping methods to extract data from TripAdvisor, Lonely Planet, Yelp, and other relevant travel websites.</p></li>
+<li><p>Develop a robust data processing pipeline to clean, structure, and integrate the collected data into a centralized database.</p></li>
+<li><p>Design and implement a user-friendly interface that allows users to input their preferences, such as budget, interests, travel dates, and any specific requirements.</p></li>
+<li><p>Develop personalized recommendation algorithms that leverage machine learning techniques to analyze user preferences and match them with suitable destinations, attractions, accommodations, and local experiences.</p></li>
+</ol>
+<p>These goals and objectives outline the key aspects of developing a robust and effective Travel Destination Recommender system, leveraging web scraping techniques and personalized recommendation algorithms to provide a seamless and enriching travel planning experience for users.</p>
+</section>
+<section id="significance-of-the-project" class="level2">
+<h2 class="anchored" data-anchor-id="significance-of-the-project">1.3 Significance of the Project</h2>
+<p>The <strong>Travel Destination Recommender</strong> project holds significant importance and offers numerous benefits for both travelers and the travel industry. Here are some key points highlighting the significance of this project:</p>
+<ol type="1">
+<li><p><strong>Personalized Travel Experience:</strong> The recommender system tailors suggestions to individual preferences, interests, and budgets, ensuring a highly personalized travel experience. By considering factors such as travel dates, desired activities, and accommodation preferences, the system can provide customized recommendations that cater to each user’s unique needs and aspirations.</p></li>
+<li><p><strong>Efficient Travel Planning:</strong> Planning a trip can be a time-consuming and overwhelming process, requiring extensive research across multiple websites and sources. The Travel Destination Recommender streamlines this process by consolidating relevant information from various travel platforms, saving users valuable time and effort while minimizing the risk of overlooking important details.</p></li>
+<li><p><strong>Discovery of Hidden Gems:</strong> Popular tourist destinations and attractions are well-documented, but the recommender system has the potential to uncover lesser-known destinations, off-the-beaten-path experiences, and local gems. By analyzing data from diverse sources, the system can suggest unique and authentic travel experiences that might otherwise be missed, enhancing the overall travel experience.</p></li>
+<li><p><strong>Data-Driven Insights:</strong> By leveraging web scraping techniques and machine learning algorithms, the Travel Destination Recommender can uncover valuable insights and patterns from vast amounts of travel data. These insights can inform decision-making processes for travel agencies, tourism boards, and other stakeholders, enabling them to better understand consumer preferences and tailor their offerings accordingly.</p></li>
+<li><p><strong>Promoting Sustainable Tourism:</strong> The recommender system can be designed to prioritize sustainable and responsible travel options, highlighting destinations and activities that align with eco-friendly practices and support local communities. This can contribute to the growth of sustainable tourism and raise awareness about the importance of minimizing the environmental impact of travel.</p></li>
+<li><p><strong>Enhancing User Engagement:</strong> By providing a seamless and personalized travel planning experience, the Travel Destination Recommender can foster increased user engagement and loyalty. Users are more likely to return to a platform that consistently delivers relevant and valuable recommendations, creating opportunities for monetization and long-term growth.</p></li>
+<li><p><strong>Industry Innovation:</strong> The project represents an innovative approach to travel planning, leveraging cutting-edge technologies such as web scraping, machine learning, and personalized recommendation algorithms. Its success can inspire further advancements and innovations within the travel industry, driving progress and enhancing the overall travel experience for consumers.</p></li>
+</ol>
+<p>The Travel Destination Recommender project has the potential to revolutionize the way people plan and experience their travels, offering a personalized, efficient, and sustainable approach to exploring the world. By harnessing the power of data and technology, this project can significantly contribute to the growth and evolution of the travel industry while enhancing the overall quality of travel experiences for users.</p>
+</section>
+</section>
+<section id="implementation-details" class="level1">
+<h1>2. Implementation Details</h1>
+<section id="data-collection" class="level2">
+<h2 class="anchored" data-anchor-id="data-collection">Data Collection</h2>
+<section id="step-1-choosing-travel-websites" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-choosing-travel-websites"><strong>Step 1: Choosing Travel Websites</strong></h3>
+<ul>
+<li>TripAdvisor (https://www.tripadvisor.com/)</li>
+<li>Lonely Planet (https://www.lonelyplanet.com/)</li>
+<li>Yelp (https://www.yelp.com/)</li>
+<li>Booking.com (https://www.booking.com/)</li>
+</ul>
+</section>
+<section id="tripadvisor-httpswww.tripadvisor.com" class="level3">
+<h3 class="anchored" data-anchor-id="tripadvisor-httpswww.tripadvisor.com">TripAdvisor (https://www.tripadvisor.com/)</h3>
+<p>TripAdvisor stands out as an ideal choice due to its comprehensive coverage of travel information. Boasting one of the largest repositories of user-generated reviews and ratings, it offers valuable insights into travelers’ experiences and preferences. Moreover, TripAdvisor’s attraction rankings based on popularity and user ratings make it an invaluable resource for identifying top destinations. With its global coverage spanning diverse destinations worldwide, it caters to a broad spectrum of travel interests and preferences.</p>
+</section>
+<section id="lonely-planet-httpswww.lonelyplanet.com" class="level3">
+<h3 class="anchored" data-anchor-id="lonely-planet-httpswww.lonelyplanet.com">Lonely Planet (https://www.lonelyplanet.com/)</h3>
+<p>Lonely Planet emerges as a prime candidate for scraping travel data owing to its reputation for expert recommendations and curated travel guides. Renowned for its commitment to promoting authentic and off-the-beaten-path experiences, Lonely Planet offers travelers reliable insights into unique adventures. Its guides are not only informative but also provide in-depth cultural insights and historical background, enriching travelers’ understanding of destinations. Additionally, Lonely Planet’s specialized guides cater to various interests, including food, adventure, and cultural exploration, ensuring relevance to diverse traveler preferences.</p>
+</section>
+<section id="yelp-httpswww.yelp.com" class="level3">
+<h3 class="anchored" data-anchor-id="yelp-httpswww.yelp.com">Yelp (https://www.yelp.com/)</h3>
+<p>Yelp is an excellent choice for scraping travel data, particularly regarding restaurant reviews and local business information. With a focus on providing comprehensive coverage of local businesses, including attractions, shops, and services, Yelp offers valuable information for travelers. Its user-generated content allows travelers to access authentic reviews and recommendations from fellow travelers and locals alike. Furthermore, Yelp’s location-based search feature facilitates the discovery of nearby attractions, restaurants, and activities, streamlining the trip planning process for travelers.</p>
+</section>
+<section id="booking.com-httpswww.booking.com" class="level3">
+<h3 class="anchored" data-anchor-id="booking.com-httpswww.booking.com">Booking.com (https://www.booking.com/)</h3>
+<p>Booking.com emerges as a suitable option for scraping accommodation-related data, given its extensive coverage of hotel and accommodation listings. As a leading platform for hotel bookings, Booking.com offers a vast selection of properties worldwide, catering to various budgets and preferences. The platform’s user reviews and ratings provide valuable insights into the quality and guest experiences of accommodations, enabling travelers to make informed decisions. Additionally, Booking.com’s range of booking options, including flexible cancellation policies and last-minute deals, enhances its appeal to travelers seeking convenience and flexibility in their bookings.</p>
+</section>
+<section id="step-2-identifying-data-to-scrape" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-identifying-data-to-scrape"><strong>Step 2: Identifying Data to Scrape</strong></h3>
+</section>
+<section id="attractions-sights-landmarks-museums-parks" class="level3">
+<h3 class="anchored" data-anchor-id="attractions-sights-landmarks-museums-parks">Attractions (sights, landmarks, museums, parks)</h3>
+<p>Scraping data on attractions entails gathering information about notable sights, landmarks, museums, and parks in various destinations. These attractions serve as key points of interest for travelers, offering cultural, historical, and recreational experiences. By scraping data on attractions, the recommender system can provide travelers with insights into must-visit locations, including details on opening hours, admission fees, visitor reviews, and notable features.</p>
+</section>
+<section id="hotels-ratings-prices-amenities" class="level3">
+<h3 class="anchored" data-anchor-id="hotels-ratings-prices-amenities">Hotels (ratings, prices, amenities)</h3>
+<p>Hotels constitute a crucial aspect of travel planning, providing accommodations for travelers during their trips. Scraping data on hotels involves gathering information on their ratings, prices, and amenities. Ratings and reviews from previous guests offer valuable insights into the quality and service standards of hotels, helping travelers make informed decisions. Additionally, pricing information enables travelers to compare options based on their budget constraints, while details on amenities such as Wi-Fi, breakfast, and parking facilities enhance the overall user experience.</p>
+</section>
+<section id="restaurants-ratings-cuisines-prices" class="level3">
+<h3 class="anchored" data-anchor-id="restaurants-ratings-cuisines-prices">Restaurants (ratings, cuisines, prices)</h3>
+<p>Restaurants play a vital role in enhancing the travel experience by offering diverse culinary experiences and flavors unique to each destination. Scraping data on restaurants involves gathering information on their ratings, cuisines, and prices. User-generated ratings and reviews provide valuable feedback on the quality of food, service, and ambiance, aiding travelers in selecting dining options that align with their preferences. Moreover, details on cuisines and price ranges allow travelers to explore a variety of dining options that suit their tastes and budget.</p>
+</section>
+<section id="local-experiences-tours-activities-events" class="level3">
+<h3 class="anchored" data-anchor-id="local-experiences-tours-activities-events">Local Experiences (tours, activities, events)</h3>
+<p>Local experiences encompass a wide range of tours, activities, and events that offer immersive and authentic cultural experiences for travelers. Scraping data on local experiences involves gathering information on guided tours, outdoor activities, cultural events, and entertainment options available in each destination. By providing insights into these experiences, the recommender system enables travelers to discover and participate in activities that align with their interests and preferences, enhancing their overall travel experience.</p>
+</section>
+<section id="user-preferences-budget-interests-travel-dates" class="level3">
+<h3 class="anchored" data-anchor-id="user-preferences-budget-interests-travel-dates">User Preferences (budget, interests, travel dates)</h3>
+<p>User preferences constitute the foundation of personalized travel recommendations, guiding the selection of destinations and experiences that best suit each traveler’s needs and preferences. Scraping data on user preferences involves gathering information on budget constraints, travel interests, and travel dates. By understanding travelers’ budget limitations, interests such as adventure, history, or culinary exploration, and travel dates, the recommender system can tailor recommendations to match individual preferences, ensuring a customized and enjoyable travel experience for each user.</p>
+</section>
+<section id="step-3-set-up-your-environment" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-set-up-your-environment"><strong>Step 3: Set Up Your Environment</strong></h3>
+</section>
+<section id="instant-data-scraper-web-extension" class="level3">
+<h3 class="anchored" data-anchor-id="instant-data-scraper-web-extension">Instant Data Scraper Web Extension</h3>
+<p>For this project, the Instant Data Scraper web extension was utilized as an alternative to traditional web scraping libraries like BeautifulSoup and requests. Instant Data Scraper is a browser extension available for Chrome and Firefox, designed specifically for scraping data from web pages with ease. By installing the extension, users gain access to a user-friendly interface that allows them to select and extract data directly from websites without writing code. This approach simplifies the process of data extraction, making it accessible to individuals without extensive programming knowledge. Additionally, the extension provides features for exporting scraped data in various formats, such as CSV or JSON, for further analysis and processing.</p>
+</section>
+<section id="octoparse" class="level3">
+<h3 class="anchored" data-anchor-id="octoparse">Octoparse</h3>
+<p>In addition to the Instant Data Scraper web extension, Octoparse was employed as a web scraping tool for this project. Octoparse is a powerful and versatile web scraping software that enables users to extract data from websites using a visual point-and-click interface. With Octoparse, users can create scraping tasks by simply navigating through web pages and selecting the data they want to extract. The software offers advanced features such as automatic IP rotation, data export scheduling, and cloud-based extraction for handling large-scale scraping projects efficiently. Furthermore, Octoparse provides support for scraping dynamic and JavaScript-rendered web pages, ensuring compatibility with a wide range of websites and data sources.</p>
+</section>
+<section id="step-4-start-scraping" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-start-scraping"><strong>Step 4: Start Scraping</strong></h3>
+<p>Now that we’ve set up our environment using web scraping tools like Instant Data Scraper and Octoparse, we can begin scraping data from each selected website. Instead of writing scripts, we’ll utilize the intuitive interfaces provided by these tools to extract data seamlessly.</p>
+</section>
+<section id="using-instant-data-scraper" class="level3">
+<h3 class="anchored" data-anchor-id="using-instant-data-scraper">Using Instant Data Scraper:</h3>
+<ol type="1">
+<li>Launch the Instant Data Scraper web extension in your browser.</li>
+<li>Navigate to the desired website, such as TripAdvisor or Lonely Planet.</li>
+<li>Use the extension’s point-and-click interface to select the data you want to scrape, such as top attractions in a city.</li>
+<li>Configure the scraping settings, including pagination handling and data export options.</li>
+<li>Run the scraper to extract the selected data from the website.</li>
+<li>Export the scraped data in a suitable format, such as CSV or JSON, for further analysis.</li>
+</ol>
+</section>
+<section id="using-octoparse" class="level3">
+<h3 class="anchored" data-anchor-id="using-octoparse">Using Octoparse:</h3>
+<ol type="1">
+<li>Launch the Octoparse software on your computer.</li>
+<li>Create a new scraping task and enter the URL of the target website.</li>
+<li>Use Octoparse’s visual workflow builder to define the extraction steps, such as navigating to specific pages and selecting data elements.</li>
+<li>Configure advanced settings, such as automatic IP rotation and data export scheduling, as needed.</li>
+<li>Run the scraping task to extract data from the website.</li>
+<li>Review and verify the extracted data within the Octoparse interface.</li>
+<li>Export the scraped data to your preferred format for analysis and processing.</li>
+</ol>
+<p>By leveraging these web scraping tools, we can efficiently gather data from multiple websites without the need for writing complex scripts. This approach streamlines the scraping process and allows us to focus on refining and analyzing the extracted data for our travel destination recommender.</p>
+</section>
+<section id="step-5-refine-your-scripts" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-refine-your-scripts"><strong>Step 5: Refine Your Scripts</strong></h3>
+<ul>
+<li>Refine scripts to extract specific data like hotel details, restaurant reviews, and activity information.</li>
+<li>Handle pagination for websites with multiple pages of results.</li>
+<li>Adapt scripts to website structure changes.</li>
+</ul>
+</section>
+</section>
+<section id="data-preprocessing" class="level2">
+<h2 class="anchored" data-anchor-id="data-preprocessing">Data Preprocessing</h2>
+<div id="cell-22" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bertopic <span class="im">import</span> BERTopic</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> stopwords</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.tokenize <span class="im">import</span> word_tokenize</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bertopic <span class="im">import</span> BERTopic</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> stopwords</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> string</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'punkt'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="must-see-attractions" class="level3">
+<h3 class="anchored" data-anchor-id="must-see-attractions">Must-See Attractions</h3>
+<section id="berlin" class="level4">
+<h4 class="anchored" data-anchor-id="berlin">Berlin</h4>
+<div id="cell-25" class="cell panel-input card bg-light p-2" data-execution_count="6">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data from CSV file</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>berlin <span class="op">=</span> pd.read_csv(<span class="st">'/Users/emredeveci/Desktop/TDR/must-see-attractions/berlin_attractions - Sheet1.csv'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>berlin.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="bremen" class="level4">
+<h4 class="anchored" data-anchor-id="bremen">Bremen</h4>
+<div id="cell-27" class="cell panel-input card bg-light p-2" data-execution_count="12">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data from CSV file</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>bremen <span class="op">=</span> pd.read_csv(<span class="st">'/Users/emredeveci/Desktop/TDR/must-see-attractions/bremen_attractions - Sheet1.csv'</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>bremen.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="hamburg" class="level4">
+<h4 class="anchored" data-anchor-id="hamburg">Hamburg</h4>
+<div id="cell-29" class="cell panel-input card bg-light p-2" data-execution_count="13">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data from CSV file</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>hamburg <span class="op">=</span> pd.read_csv(<span class="st">'/Users/emredeveci/Desktop/TDR/must-see-attractions/hamburg_attractions - Sheet1.csv'</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>hamburg.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="munich" class="level4">
+<h4 class="anchored" data-anchor-id="munich">Munich</h4>
+<div id="cell-31" class="cell panel-input card bg-light p-2" data-execution_count="11">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data from CSV file</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>munich <span class="op">=</span> pd.read_csv(<span class="st">'/Users/emredeveci/Desktop/TDR/must-see-attractions/munich_attractions - Sheet1.csv'</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>munich.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="combined-dataset" class="level4">
+<h4 class="anchored" data-anchor-id="combined-dataset">Combined dataset</h4>
+<div id="cell-33" class="cell panel-input card bg-light p-2" data-execution_count="17">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Concatenate the three dataframes along the rows (axis=0)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>germany_df <span class="op">=</span> pd.concat([bremen, berlin, hamburg,munich], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the combined dataframe to a new CSV file</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>germany_df.to_csv(<span class="st">'combined_dataset.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="op">=</span> germany_df[<span class="op">~</span>germany_df[<span class="st">'type'</span>].isin([<span class="st">'to_stay'</span>, <span class="st">'to_eat'</span>])]</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>filtered_df.head()</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">website1</th>
+<th data-quarto-table-cell-role="th">website2</th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">location</th>
+<th data-quarto-table-cell-role="th">description</th>
+<th data-quarto-table-cell-role="th">type</th>
+<th data-quarto-table-cell-role="th">city</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>https://lonelyplanetstatic.imgix.net/marketing...</td>
+<td>https://www.lonelyplanet.com/germany/lower-sax...</td>
+<td>Herrenhäuser Gärten</td>
+<td>Hanover</td>
+<td>Proof that Hanover is not all buttoned-down bu...</td>
+<td>must_see</td>
+<td>Lower Saxony &amp; Bremen</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>https://lp-cms-production.imgix.net/2019-06/2a...</td>
+<td>https://www.lonelyplanet.com/germany/bergen-be...</td>
+<td>Gedenkstätte Bergen-Belsen</td>
+<td>Lower Saxony &amp; Bremen</td>
+<td>The Nazi-built camp at Bergen-Belsen began its...</td>
+<td>must_see</td>
+<td>Lower Saxony &amp; Bremen</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>https://lonelyplanetstatic.imgix.net/marketing...</td>
+<td>https://www.lonelyplanet.com/germany/lower-sax...</td>
+<td>Schloss Marienburg</td>
+<td>Lower Saxony &amp; Bremen</td>
+<td>Perched grandly above the Leine River, the neo...</td>
+<td>must_see</td>
+<td>Lower Saxony &amp; Bremen</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>https://lonelyplanetstatic.imgix.net/marketing...</td>
+<td>https://www.lonelyplanet.com/germany/bremen-ci...</td>
+<td>Denkort Bunker Valentin</td>
+<td>Bremen City</td>
+<td>In 1943, the Nazis started construction of a m...</td>
+<td>must_see</td>
+<td>Lower Saxony &amp; Bremen</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>https://lonelyplanetstatic.imgix.net/marketing...</td>
+<td>https://www.lonelyplanet.com/germany/lower-sax...</td>
+<td>Autostadt</td>
+<td>Lower Saxony &amp; Bremen</td>
+<td>A hit with car buffs of all ages, Autostadt is...</td>
+<td>must_see</td>
+<td>Lower Saxony &amp; Bremen</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="tours" class="level3">
+<h3 class="anchored" data-anchor-id="tours">Tours</h3>
+<section id="tours-in-bremen" class="level4">
+<h4 class="anchored" data-anchor-id="tours-in-bremen">Tours in Bremen</h4>
+<div id="cell-36" class="cell panel-input card bg-light p-2" data-execution_count="20">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data from CSV file</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>tour_bremen <span class="op">=</span> pd.read_csv(<span class="st">'/Users/emredeveci/Desktop/TDR/tours/bremen_tour - Sheet1.csv'</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>tour_bremen.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="tours-in-berlin" class="level4">
+<h4 class="anchored" data-anchor-id="tours-in-berlin">Tours in Berlin</h4>
+<div id="cell-38" class="cell panel-input card bg-light p-2" data-execution_count="21">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data from CSV file</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>tour_berlin <span class="op">=</span> pd.read_csv(<span class="st">'/Users/emredeveci/Desktop/TDR/tours/berlin_tour - Sheet1.csv'</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>tour_berlin.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="tours-in-hamburg" class="level4">
+<h4 class="anchored" data-anchor-id="tours-in-hamburg">Tours in Hamburg</h4>
+<div id="cell-40" class="cell panel-input card bg-light p-2" data-execution_count="22">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data from CSV file</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>tour_hamburg <span class="op">=</span> pd.read_csv(<span class="st">'/Users/emredeveci/Desktop/TDR/tours/hamburg_tour - Sheet1.csv'</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>tour_hamburg.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="tours-in-munich" class="level4">
+<h4 class="anchored" data-anchor-id="tours-in-munich">Tours in Munich</h4>
+<div id="cell-42" class="cell panel-input card bg-light p-2" data-execution_count="23">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data from CSV file</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>tour_munich <span class="op">=</span> pd.read_csv(<span class="st">'/Users/emredeveci/Desktop/TDR/tours/munich_tour - Sheet1.csv'</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>tour_munich.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="combined-tours-dataset" class="level4">
+<h4 class="anchored" data-anchor-id="combined-tours-dataset">Combined Tours Dataset</h4>
+<div id="cell-56" class="cell panel-input card bg-light p-2" data-execution_count="38">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>all_tours.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="38">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">website</th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">score</th>
+<th data-quarto-table-cell-role="th">reviews</th>
+<th data-quarto-table-cell-role="th">type</th>
+<th data-quarto-table-cell-role="th">duration</th>
+<th data-quarto-table-cell-role="th">comment1</th>
+<th data-quarto-table-cell-role="th">price</th>
+<th data-quarto-table-cell-role="th">group</th>
+<th data-quarto-table-cell-role="th">city</th>
+<th data-quarto-table-cell-role="th">price_category</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>https://www.tripadvisor.com/AttractionProductR...</td>
+<td>The Local Tour of Hamburg Historic Centre</td>
+<td>5.0 of 5 bubbles</td>
+<td>784</td>
+<td>Historical Tours</td>
+<td>2 hours</td>
+<td>Pay-What-You-Want tour with booking fee!\n\nWi...</td>
+<td>3.0</td>
+<td>per adult</td>
+<td>hamburg</td>
+<td>Low</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>https://www.tripadvisor.com/AttractionProductR...</td>
+<td>Private Small-Group Hamburg City Tour with a L...</td>
+<td>5.0 of 5 bubbles</td>
+<td>178</td>
+<td>Historical Tours</td>
+<td>3 hours</td>
+<td>Welcome to our beloved Hamburg.\nI´m a former ...</td>
+<td>264.0</td>
+<td>per group</td>
+<td>hamburg</td>
+<td>Moderate</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>https://www.tripadvisor.com/AttractionProductR...</td>
+<td>Hop-on hop-off on the water with the Maritime ...</td>
+<td>4.0 of 5 bubbles</td>
+<td>63</td>
+<td>Day Cruises</td>
+<td>1–2 hours</td>
+<td>A sightseeing harbor cruise with the Maritime ...</td>
+<td>22.0</td>
+<td>per adult</td>
+<td>hamburg</td>
+<td>Low</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>https://www.tripadvisor.com/AttractionProductR...</td>
+<td>Hamburg Dungeon Admission Ticket</td>
+<td>4.0 of 5 bubbles</td>
+<td>187</td>
+<td>Historical Tours</td>
+<td>1–2 hours</td>
+<td>Experience 600 years of dark history - if you ...</td>
+<td>31.0</td>
+<td>per adult</td>
+<td>hamburg</td>
+<td>Low</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>https://www.tripadvisor.com/AttractionProductR...</td>
+<td>Hamburg 2-hour harbor tour on the beautiful Elbe</td>
+<td>3.5 of 5 bubbles</td>
+<td>21</td>
+<td>Historical Tours</td>
+<td>2 hours</td>
+<td>We offer an extensive Hamburg XXL harbor tour ...</td>
+<td>38.0</td>
+<td>per adult</td>
+<td>hamburg</td>
+<td>Low</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div id="cell-57" class="cell panel-input card bg-light p-2" data-execution_count="39">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(price_counts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>price_category
+Moderate    788
+High        570
+Low         342
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="restaurant-data" class="level3">
+<h3 class="anchored" data-anchor-id="restaurant-data">Restaurant Data</h3>
+<div id="cell-59" class="cell panel-input card bg-light p-2" data-execution_count="41">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>filtered_rest_df <span class="op">=</span> germany_df[germany_df[<span class="st">'type'</span>].isin([<span class="st">'to_eat'</span>])]</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>filtered_rest_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="41">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">website1</th>
+<th data-quarto-table-cell-role="th">website2</th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">location</th>
+<th data-quarto-table-cell-role="th">description</th>
+<th data-quarto-table-cell-role="th">type</th>
+<th data-quarto-table-cell-role="th">city</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">115</td>
+<td>https://www.lonelyplanet.com/germany/lower-sax...</td>
+<td>https://www.lonelyplanet.com/germany/lower-sax...</td>
+<td>Al-Dar</td>
+<td>Hanover</td>
+<td>This popular Syrian restaurant a stone's throw...</td>
+<td>to_eat</td>
+<td>Lower Saxony &amp; Bremen</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">116</td>
+<td>https://www.lonelyplanet.com/germany/lower-sax...</td>
+<td>https://www.lonelyplanet.com/germany/lower-sax...</td>
+<td>Vietal Kitchen</td>
+<td>Hanover</td>
+<td>Pale-green louvres and bamboo lanterns set a F...</td>
+<td>to_eat</td>
+<td>Lower Saxony &amp; Bremen</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">117</td>
+<td>https://www.lonelyplanet.com/germany/hildeshei...</td>
+<td>https://www.lonelyplanet.com/germany/hildeshei...</td>
+<td>Schlegels Weinstuben</td>
+<td>Lower Saxony &amp; Bremen</td>
+<td>The lopsided walls of this rose-covered, 500-y...</td>
+<td>to_eat</td>
+<td>Lower Saxony &amp; Bremen</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">118</td>
+<td>https://www.lonelyplanet.com/germany/norderney...</td>
+<td>https://www.lonelyplanet.com/germany/norderney...</td>
+<td>Seesteg</td>
+<td>East Frisian Islands</td>
+<td>Nordeney's Michelin-starred restaurant offers ...</td>
+<td>to_eat</td>
+<td>Lower Saxony &amp; Bremen</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">119</td>
+<td>https://www.lonelyplanet.com/germany/lower-sax...</td>
+<td>https://www.lonelyplanet.com/germany/lower-sax...</td>
+<td>Basil</td>
+<td>Hanover</td>
+<td>These former stables to the north of town now ...</td>
+<td>to_eat</td>
+<td>Lower Saxony &amp; Bremen</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="hotel-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="hotel-dataset">Hotel Dataset</h3>
+<div id="cell-72" class="cell panel-input card bg-light p-2">
+<div class="cell-output cell-output-display" data-execution_count="190">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">website</th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">location</th>
+<th data-quarto-table-cell-role="th">distance</th>
+<th data-quarto-table-cell-role="th">score</th>
+<th data-quarto-table-cell-role="th">reviews</th>
+<th data-quarto-table-cell-role="th">type</th>
+<th data-quarto-table-cell-role="th">type2</th>
+<th data-quarto-table-cell-role="th">day</th>
+<th data-quarto-table-cell-role="th">price</th>
+<th data-quarto-table-cell-role="th">city</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>https://www.booking.com/hotel/de/hapimag-resor...</td>
+<td>Hapimag Ferienwohnungen München</td>
+<td>Ludwigsvorstadt, Munich</td>
+<td>Show on map</td>
+<td>8.3</td>
+<td>317 reviews</td>
+<td>2</td>
+<td>3 beds (2 sofa beds, 1 large double)</td>
+<td>1 night, 1 adult</td>
+<td>265.0</td>
+<td>munich</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>https://www.booking.com/hotel/de/ausbildungsho...</td>
+<td>Ausbildungshotel St. Theresia</td>
+<td>Neuhausen - Nymphenburg, Munich</td>
+<td>Show on map</td>
+<td>8.3</td>
+<td>1,538 reviews</td>
+<td>2</td>
+<td>1 single bed</td>
+<td>1 night, 1 adult</td>
+<td>52.0</td>
+<td>munich</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>https://www.booking.com/hotel/de/edenwolff.en-...</td>
+<td>Eden Hotel Wolff</td>
+<td>Maxvorstadt, Munich</td>
+<td>Show on map</td>
+<td>8.2</td>
+<td>4,883 reviews</td>
+<td>2</td>
+<td>1 single bed</td>
+<td>1 night, 1 adult</td>
+<td>122.0</td>
+<td>munich</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>https://www.booking.com/hotel/de/motel-one-mun...</td>
+<td>Motel One München-Campus</td>
+<td>Obergiesing - Fasangarten, Munich</td>
+<td>Show on map</td>
+<td>8.4</td>
+<td>6,591 reviews</td>
+<td>2</td>
+<td>1 double bed</td>
+<td>1 night, 1 adult</td>
+<td>79.0</td>
+<td>munich</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>https://www.booking.com/hotel/de/hotelpreysing...</td>
+<td>JAMS Music Hotel Munich</td>
+<td>Au-Haidhausen, Munich</td>
+<td>Show on map</td>
+<td>8.3</td>
+<td>1,763 reviews</td>
+<td>2</td>
+<td>1 double bed</td>
+<td>1 night, 1 adult</td>
+<td>176.0</td>
+<td>munich</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div id="cell-73" class="cell panel-input card bg-light p-2" data-execution_count="209">
+<div class="cell-output cell-output-stdout">
+<pre><code>Number of hotels:
+- Under 100 euro: 416
+- Between 100 and 500 euro: 751
+- Over 500 euro: 8</code></pre>
+</div>
+</div>
+<div id="cell-74" class="cell panel-input card bg-light p-2" data-execution_count="213">
+<div class="cell-output cell-output-stdout">
+<pre><code>Number of hotels under 100 euro in each city:
+city
+berlin      97
+bremen      60
+hamburg     29
+munich     230
+dtype: int64</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="feature-extraction" class="level2">
+<h2 class="anchored" data-anchor-id="feature-extraction">Feature Extraction</h2>
+</section>
+<section id="recommendation-engine-development" class="level2">
+<h2 class="anchored" data-anchor-id="recommendation-engine-development">Recommendation Engine Development</h2>
+<section id="city-recommendation-engine" class="level3">
+<h3 class="anchored" data-anchor-id="city-recommendation-engine">City Recommendation Engine</h3>
+<div id="cell-81" class="cell panel-input card bg-light p-2" data-execution_count="216">
+<div class="cell-output cell-output-display">
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
+</div>
+<div id="cell-84" class="cell panel-input card bg-light p-2" data-execution_count="223">
+<div class="cell-output cell-output-stdout">
+<pre><code>The most relevant city for Topic 3 is Munich with a count of 3096.</code></pre>
+</div>
+</div>
+<div id="cell-85" class="cell panel-input card bg-light p-2" data-execution_count="222">
+<div class="cell-output cell-output-stdout">
+<pre><code>The most relevant city for Topic -1 is Munich with a count of 13588.
+The most relevant city for Topic 0 is Munich with a count of 2408.
+The most relevant city for Topic 1 is Berlin with a count of 2132.
+The most relevant city for Topic 2 is Berlin with a count of 1312.
+The most relevant city for Topic 3 is Munich with a count of 3096.
+The most relevant city for Topic 4 is Munich with a count of 1720.
+The most relevant city for Topic 5 is Berlin with a count of 1968.
+The most relevant city for Topic 6 is Berlin with a count of 1804.
+The most relevant city for Topic 7 is Munich with a count of 688.
+The most relevant city for Topic 8 is Munich with a count of 1376.
+The most relevant city for Topic 9 is Munich with a count of 860.
+The most relevant city for Topic 10 is Berlin with a count of 820.
+The most relevant city for Topic 11 is Munich with a count of 1376.
+The most relevant city for Topic 12 is Berlin with a count of 1312.
+The most relevant city for Topic 13 is Hamburg with a count of 511.
+The most relevant city for Topic 14 is Kreuzberg with a count of 182.
+The most relevant city for Topic 15 is Munich with a count of 172.
+The most relevant city for Topic 16 is Historic Mitte with a count of 225.
+The most relevant city for Topic 17 is Hamburg with a count of 219.
+The most relevant city for Topic 18 is Lower Saxony &amp; Bremen with a count of 265.
+The most relevant city for Topic 19 is Munich with a count of 344.
+The most relevant city for Topic 20 is Berlin with a count of 328.
+The most relevant city for Topic 21 is Berlin with a count of 492.
+The most relevant city for Topic 22 is Munich with a count of 344.
+The most relevant city for Topic 23 is Hamburg with a count of 219.</code></pre>
+</div>
+</div>
+</section>
+<section id="tour-recommender-engine" class="level3">
+<h3 class="anchored" data-anchor-id="tour-recommender-engine">Tour Recommender Engine</h3>
+<div id="cell-89" class="cell panel-input card bg-light p-2" data-execution_count="235">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, let's convert 'score' to float</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_score(score_str):</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">float</span>(score_str.split()[<span class="dv">0</span>])  <span class="co"># Take the first part of the string, convert to float</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span>:</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply the function to 'score' column</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>all_tours[<span class="st">'score'</span>] <span class="op">=</span> all_tours[<span class="st">'score'</span>].<span class="bu">apply</span>(extract_score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="cell-91" class="cell panel-input card bg-light p-2" data-execution_count="237">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>budget <span class="op">=</span> <span class="dv">200</span>  <span class="co"># User's budget in dollars</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>top_tours <span class="op">=</span> recommend_tours(budget)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Top 5 Tours based on Budget:"</span>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>top_tours.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Top 5 Tours based on Budget:</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="237">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">website</th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">score</th>
+<th data-quarto-table-cell-role="th">reviews</th>
+<th data-quarto-table-cell-role="th">type</th>
+<th data-quarto-table-cell-role="th">duration</th>
+<th data-quarto-table-cell-role="th">comment1</th>
+<th data-quarto-table-cell-role="th">price</th>
+<th data-quarto-table-cell-role="th">group</th>
+<th data-quarto-table-cell-role="th">city</th>
+<th data-quarto-table-cell-role="th">price_category</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1051</td>
+<td>https://www.tripadvisor.com/AttractionProductR...</td>
+<td>Third Reich Walking Tour Munich</td>
+<td>5.0</td>
+<td>1,516</td>
+<td>Historical Tours</td>
+<td>2–3 hours</td>
+<td>As birthplace of the Nazi Party and home of it...</td>
+<td>35.0</td>
+<td>per adult</td>
+<td>munich</td>
+<td>Low</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1061</td>
+<td>https://www.tripadvisor.com/AttractionProductR...</td>
+<td>Munich Sightseeing Guided Bike Tour</td>
+<td>5.0</td>
+<td>527</td>
+<td>Historical Tours</td>
+<td>3–4 hours</td>
+<td>See more of Munich in a short amount of time t...</td>
+<td>44.0</td>
+<td>per adult</td>
+<td>munich</td>
+<td>Low</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1074</td>
+<td>https://www.tripadvisor.com/AttractionProductR...</td>
+<td>Full-Day Dachau Concentration Camp Memorial Si...</td>
+<td>5.0</td>
+<td>285</td>
+<td>Public Transportation Tours</td>
+<td>6 hours</td>
+<td>Dachau Concentration Camp Memorial Site is a p...</td>
+<td>50.0</td>
+<td>per adult</td>
+<td>munich</td>
+<td>Low</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1078</td>
+<td>https://www.tripadvisor.com/AttractionProductR...</td>
+<td>Dachau Small-Group Half-Day Tour from Munich B...</td>
+<td>5.0</td>
+<td>224</td>
+<td>Historical Tours</td>
+<td>5 hours</td>
+<td>Pay respects to the innocent victims of Hitler...</td>
+<td>50.0</td>
+<td>per adult</td>
+<td>munich</td>
+<td>Low</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1083</td>
+<td>https://www.tripadvisor.com/AttractionProductR...</td>
+<td>Dachau Tour from Munich</td>
+<td>5.0</td>
+<td>442</td>
+<td>Historical Tours</td>
+<td>5 hours</td>
+<td>All of our guides are officially authorized to...</td>
+<td>50.0</td>
+<td>per adult</td>
+<td>munich</td>
+<td>Low</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="to-do-recommendation-engine" class="level3">
+<h3 class="anchored" data-anchor-id="to-do-recommendation-engine">To-do Recommendation Engine</h3>
+<div id="cell-95" class="cell panel-input card bg-light p-2" data-execution_count="240">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The best 5 things to do in </span><span class="sc">{</span>most_common_city<span class="sc">}</span><span class="ss"> for Topic 3 are:"</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>top_5_things_to_do.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>The best 5 things to do in Munich for Topic 3 are:</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="240">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">website1</th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">location</th>
+<th data-quarto-table-cell-role="th">description</th>
+<th data-quarto-table-cell-role="th">type</th>
+<th data-quarto-table-cell-role="th">city</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1720</td>
+<td>https://lp-cms-production.imgix.net/2019-06/a4...</td>
+<td>Holareidulijö</td>
+<td>Munich</td>
+<td>This rare secondhand traditional-clothing stor...</td>
+<td>to_shop</td>
+<td>Munich</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1721</td>
+<td>https://lonelyplanetstatic.imgix.net/marketing...</td>
+<td>Pick &amp; Weight</td>
+<td>Munich</td>
+<td>Part of a small national chain, Pick &amp; Weight ...</td>
+<td>to_shop</td>
+<td>Munich</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1724</td>
+<td>https://lonelyplanetstatic.imgix.net/marketing...</td>
+<td>Loden-Frey</td>
+<td>Munich</td>
+<td>The famous cloth producer stocks a wide range ...</td>
+<td>to_shop</td>
+<td>Munich</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1725</td>
+<td>https://lonelyplanetstatic.imgix.net/marketing...</td>
+<td>7 Himmel</td>
+<td>Munich</td>
+<td>Couture cool-hunters will be in seventh heaven...</td>
+<td>to_shop</td>
+<td>Munich</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="restaurant-recommendation" class="level3">
+<h3 class="anchored" data-anchor-id="restaurant-recommendation">Restaurant Recommendation</h3>
+<div id="cell-101" class="cell panel-input card bg-light p-2" data-execution_count="245">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the DataFrame for Topic 3</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>topic_3_cities <span class="op">=</span> scatter_df[scatter_df[<span class="st">'Topic'</span>] <span class="op">==</span> <span class="dv">2</span>]</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the occurrences of each city for Topic 3</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>city_counts <span class="op">=</span> topic_3_cities[<span class="st">'location'</span>].value_counts()</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the city with the highest count</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>most_common_city <span class="op">=</span> city_counts.idxmax()</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>count_of_most_common_city <span class="op">=</span> city_counts.<span class="bu">max</span>()</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The most relevant city for Topic 3 is </span><span class="sc">{</span>most_common_city<span class="sc">}</span><span class="ss"> with a count of </span><span class="sc">{</span>count_of_most_common_city<span class="sc">}</span><span class="ss">."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>The most relevant city for Topic 3 is Berlin with a count of 285.</code></pre>
+</div>
+</div>
+<div id="cell-105" class="cell panel-input card bg-light p-2" data-execution_count="249">
+<div class="cell-output cell-output-stdout">
+<pre><code>The best restaurants to go in Berlin for Topic 3 are:</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="249">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">website1</th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">location</th>
+<th data-quarto-table-cell-role="th">description</th>
+<th data-quarto-table-cell-role="th">type</th>
+<th data-quarto-table-cell-role="th">city</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">656</td>
+<td>https://lonelyplanetstatic.imgix.net/marketing...</td>
+<td>Valladares Feinkost</td>
+<td>Berlin</td>
+<td>Beautifully situated on the quiet Stephanplatz...</td>
+<td>to_eat</td>
+<td>Berlin</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">736</td>
+<td>https://lonelyplanetstatic.imgix.net/marketing...</td>
+<td>Night Kitchen</td>
+<td>Berlin</td>
+<td>This smartly seductive courtyard bistro is oft...</td>
+<td>to_eat</td>
+<td>Berlin</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">794</td>
+<td>https://lp-cms-production.imgix.net/2019-06/e7...</td>
+<td>Weilands Wellfood</td>
+<td>Berlin</td>
+<td>After a menu revamp, this easy-going day-time ...</td>
+<td>to_eat</td>
+<td>Berlin</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">807</td>
+<td>https://lonelyplanetstatic.imgix.net/marketing...</td>
+<td>geh Veg</td>
+<td>Berlin</td>
+<td>Showing off the simple side of vegan eating, g...</td>
+<td>to_eat</td>
+<td>Berlin</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="user-interface-design" class="level2">
+<h2 class="anchored" data-anchor-id="user-interface-design">User Interface Design</h2>
+</section>
+</section>
+<section id="analysis-and-results" class="level1">
+<h1>3. Analysis and Results</h1>
+<section id="data-analysis-techniques-used" class="level2">
+<h2 class="anchored" data-anchor-id="data-analysis-techniques-used">Data Analysis Techniques Used</h2>
+</section>
+<section id="presentation-of-results" class="level2">
+<h2 class="anchored" data-anchor-id="presentation-of-results">Presentation of Results</h2>
+<section id="city-recommendation" class="level3">
+<h3 class="anchored" data-anchor-id="city-recommendation">City Recommendation:</h3>
+<p>The system will provide personalized city recommendations based on the user’s preferences and interests. The results will be presented in a user-friendly format, such as a ranked list or an interactive map, showcasing the most suitable cities for the user’s travel needs.</p>
+</section>
+<section id="must-see-attractions-1" class="level3">
+<h3 class="anchored" data-anchor-id="must-see-attractions-1">Must-See Attractions:</h3>
+<p>For the recommended cities, the system will suggest a curated list of must-see attractions, landmarks, and points of interest. These recommendations will be accompanied by relevant information, such as descriptions, images, and location details, to help users plan their itineraries effectively.</p>
+</section>
+<section id="tour-recommendations" class="level3">
+<h3 class="anchored" data-anchor-id="tour-recommendations">Tour Recommendations:</h3>
+<p>The system will recommend guided tours and organized activities within the suggested cities. The tour recommendations will be tailored to the user’s budget preferences, interests, and desired duration. The results will likely be presented in a tabular format, displaying essential details like tour name, price, duration, and brief descriptions.</p>
+</section>
+<section id="things-to-do" class="level3">
+<h3 class="anchored" data-anchor-id="things-to-do">Things to Do:</h3>
+<p>In addition to traditional attractions and tours, the system will recommend unique local experiences, hidden gems, and off-the-beaten-path activities based on the user’s interests and the city’s offerings. These recommendations will be presented as a curated list or interactive map, providing users with a diverse range of options to explore the destination authentically.</p>
+</section>
+<section id="restaurant-recommendations" class="level3">
+<h3 class="anchored" data-anchor-id="restaurant-recommendations">Restaurant Recommendations:</h3>
+<p>Recognizing the importance of culinary experiences in travel, the system will suggest restaurants and dining options within the recommended cities. These recommendations will consider the user’s preferences, such as cuisine types, budgets, and any dietary restrictions. The results may be presented as a list or map view, along with relevant details like ratings, reviews, and sample menus.</p>
+</section>
+<section id="hotel-recommendations" class="level3">
+<h3 class="anchored" data-anchor-id="hotel-recommendations">Hotel Recommendations:</h3>
+<p>To complete the travel planning experience, the system will provide hotel recommendations within the recommended cities. These recommendations will be based on the user’s budget, desired amenities, and location preferences. The results may be presented in a tabular format or interactive map view, displaying details like hotel ratings, pricing, and proximity to attractions.</p>
+<p>Throughout the presentation of results, the Travel Destination Recommender will likely incorporate visual aids, such as images, maps, and interactive elements, to enhance the user experience and make the recommendations more engaging and informative. Additionally, the system may offer personalized travel itineraries or allow users to save and share their preferred recommendations for future reference or collaboration.</p>
+</section>
+</section>
+<section id="evaluation-metrics" class="level2">
+<h2 class="anchored" data-anchor-id="evaluation-metrics">Evaluation Metrics</h2>
+</section>
+</section>
+<section id="reflection-and-conclusion" class="level1">
+<h1>4. Reflection and Conclusion</h1>
+<section id="challenges-faced" class="level2">
+<h2 class="anchored" data-anchor-id="challenges-faced">Challenges Faced</h2>
+</section>
+<section id="lessons-learned" class="level2">
+<h2 class="anchored" data-anchor-id="lessons-learned">Lessons Learned</h2>
+</section>
+<section id="overall-significance-of-findings" class="level2">
+<h2 class="anchored" data-anchor-id="overall-significance-of-findings">Overall Significance of Findings</h2>
+</section>
+<section id="future-directions" class="level2">
+<h2 class="anchored" data-anchor-id="future-directions">Future Directions</h2>
+</section>
+</section>
+<section id="references" class="level1">
+<h1>5. References</h1>
+</section>
+<section id="appendix" class="level1">
+<h1>6. Appendix</h1>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
